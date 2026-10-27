@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Home | My Blue Website</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>My Personal Website</h1>
+
+</header>
+
+
+<nav>
+
+    <ul>
+
+        <li>
+            <a href="index.html">HOME</a>
+        </li>
+
+        <li class="dropdown">
+
+            <a href="#">ABOUT ▾</a>
+
+            <div class="dropdown-content">
+
+                <a href="skills.html">
+                    My Skills
+                </a>
+
+                <a href="goals.html">
+                    My Goals
+                </a>
+
+                <a href="funfacts.html">
+                    Fun Facts
+                </a>
+
+            </div>
+
+        </li>
+
+        <li>
+            <a href="gallery.html">GALLERY</a>
+        </li>
+
+        <li>
+            <a href="contact.html">CONTACT</a>
+        </li>
+
+        <li>
+            <a
+                href="#"
+                class="logout-button"
+                onclick="confirmLogout()"
+            >
+                LOG OUT
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <!-- HERO TEXT -->
+    <div class="hero-text">
+
+        <div class="small-title">
+            Hello, I'm
+        </div>
+
+        <h2>
+            Lou Shayne Antonio
+           
+        </h2>
+
+        <p>
+            Welcome to my personal website!
+            I'm an Information Technology student
+            who enjoys learning technology,
+            designing websites, and exploring
+            creative ideas.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="gallery.html"
+                class="btn btn-primary"
+            >
+                Explore My Gallery
+            </a>
+
+            <a
+                href="#about"
+                class="btn btn-outline"
+            >
+                About Me
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- THREE PHOTO SLIDER -->
+
+    <div class="hero-slider">
+
+        <div class="hero-slides">
+
+            <img
+                src="one.jpe"
+                alt="Profile Photo"
+            >
+
+            <img
+                src="two2.jpe"
+                alt="Second Photo"
+            >
+
+            <img
+                src="me.jpe"
+                alt="Third Photo"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+
+    <div class="section-title">
+
+        <small>GET TO KNOW ME</small>
+
+        <h2>About Me</h2>
+
+    </div>
+
+
+    <div class="about-card">
+
+        <img
+            src="two.jpe"
+            alt="My Photo"
+        >
+
+
+        <div>
+
+            <h2>Hi, I'm Lou Shayne! 💙</h2>
+
+            <p>
+                I am an Information Technology student
+                who still learning about some web development and some creative digital design.
+            </p>
+
+            <br>
+
+            <p>
+                I enjoy learning new things,
+                creating projects, and improving
+                my skills one step at a time.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK INFORMATION -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <small>EXPLORE</small>
+
+        <h2>What's Inside?</h2>
+
+        <p>
+            Take a look around my website
+            and discover more about me.
+        </p>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <div class="card">
+
+            <div class="card-icon">💻</div>
+
+            <h3>My Skills</h3>
+
+            <p>
+                I'm still learning and discovering my skills as an Information Technology student.
+            </p>
+
+            <br>
+
+            <a
+                href="skills.html"
+                class="btn btn-primary"
+            >
+                View Skills
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🎯</div>
+
+            <h3>My Goals</h3>
+
+            <p>
+               Creating a future I can be proud of.
+            </p>
+
+            <br>
+
+            <a
+                href="goals.html"
+                class="btn btn-primary"
+            >
+                View Goals
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">📸</div>
+
+            <h3>My Gallery</h3>
+
+            <p>
+                A collection of moments,memories and experiences.
+            </p>
+
+            <br>
+
+            <a
+                href="gallery.html"
+                class="btn btn-primary"
+            >
+                View Gallery
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 Lou Shayne Antonio.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+<div class="footer-divider"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

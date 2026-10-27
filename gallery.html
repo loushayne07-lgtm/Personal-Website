@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Gallery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* GALLERY LAYOUT */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 18px;
+            padding: 12px;
+            box-shadow: 0 8px 25px rgba(0, 80, 150, 0.10);
+            transition: 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img.thumbnail {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .gallery-item img.thumbnail:hover {
+            transform: scale(1.02);
+        }
+
+        .image-description {
+            padding: 12px 5px 5px;
+        }
+
+        .image-description h3 {
+            color: #063970;
+            font-size: 18px;
+        }
+
+        .image-description p {
+            color: #71899a;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* LIGHTBOX */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.94);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        #lightbox .lightbox-content {
+            display: block;
+            max-width: 85vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        #lightbox .close,
+        #lightbox .prev,
+        #lightbox .next {
+            position: absolute;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 12px;
+            z-index: 100000;
+        }
+
+        #lightbox .close {
+            top: 10px;
+            right: 25px;
+            font-size: 45px;
+        }
+
+        #lightbox .prev,
+        #lightbox .next {
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+        }
+
+        #lightbox .prev {
+            left: 15px;
+        }
+
+        #lightbox .next {
+            right: 15px;
+        }
+
+        #lightbox .close:hover,
+        #lightbox .prev:hover,
+        #lightbox .next:hover {
+            color: #70c9ff;
+        }
+
+        @media (max-width: 800px) {
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            #lightbox {
+                padding: 15px;
+            }
+
+            #lightbox .lightbox-content {
+                max-width: 90vw;
+                max-height: 75vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>My Personal Website</h1>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+
+            <li class="dropdown">
+                <a href="#">ABOUT ▾</a>
+
+                <div class="dropdown-content">
+                    <a href="skills.html">My Skills</a>
+                    <a href="goals.html">My Goals</a>
+                    <a href="funfacts.html">Fun Facts</a>
+                </div>
+            </li>
+
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+
+            <li>
+                <a href="#" class="logout-button"
+                   onclick="return confirmLogout()">
+                    LOG OUT
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- GALLERY SECTION -->
+    <section class="section" style="padding-top: 170px;">
+
+        <div class="section-title">
+            <small>MY MEMORIES</small>
+            <h2>Photo Gallery</h2>
+            <p>Every picture tells a story worth remembering.</p>
+        </div>
+
+        <div class="gallery">
+
+            <!-- PHOTO 1 -->
+            <div class="gallery-item">
+                <img src="1.jpe"
+                     class="thumbnail"
+                     alt="Beautiful Moment at Rosepoint Beach Resort"
+                     onclick="openLightbox(0)">
+
+                <div class="image-description">
+                    <h3>Beautiful Moment</h3>
+                    <p>
+                        That day, we did our video presentation at
+                        Rosepoint Beach Resort in Pandan, Antique.
+                        We enjoyed the activities with our friends
+                        and felt the peaceful atmosphere, cool air,
+                        and refreshing seawater.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PHOTO 2 -->
+            <div class="gallery-item">
+                <img src="2.jpe"
+                     class="thumbnail"
+                     alt="Senior High School Cultural Dance"
+                     onclick="openLightbox(1)">
+
+                <div class="image-description">
+                    <h3>Good Memories</h3>
+                    <p>
+                        It was our last year as Senior High School
+                        students at St. Blaise High School. We joined
+                        a cultural event, performed a hip-hop dance,
+                        and were lucky enough to win.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PHOTO 3 -->
+            <div class="gallery-item">
+                <img src="3.jpe"
+                     class="thumbnail"
+                     alt="Enjoying Nature with Friends"
+                     onclick="openLightbox(2)">
+
+                <div class="image-description">
+                    <h3>Nature</h3>
+                    <p>
+                        We came here with our friends to enjoy the
+                        cool water, make new memories, set aside
+                        school worries for a while, and appreciate
+                        the beauty of nature.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PHOTO 4 -->
+            <div class="gallery-item">
+                <img src="4.jpe"
+                     class="thumbnail"
+                     alt="Ruins of Alcatraz in Roxas City"
+                     onclick="openLightbox(3)">
+
+                <div class="image-description">
+                    <h3>Favorite Place</h3>
+                    <p>
+                        It was the last day of our Round Panay trip
+                        on December 7, my 18th birthday. I enjoyed
+                        the spacious grassy area, the fresh air,
+                        and the view of the sea at the Ruins of
+                        Alcatraz in Roxas City.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PHOTO 5 -->
+            <div class="gallery-item">
+                <img src="5.jpe"
+                     class="thumbnail"
+                     alt="Playing Badminton with Classmates"
+                     onclick="openLightbox(4)">
+
+                <div class="image-description">
+                    <h3>Another Memory</h3>
+                    <p>
+                        I played badminton with my classmates to
+                        improve my sports skills, and we proudly
+                        won second place.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PHOTO 6 -->
+            <div class="gallery-item">
+                <img src="6.jpe"
+                     class="thumbnail"
+                     alt="A Special Day with My Mom"
+                     onclick="openLightbox(5)">
+
+                <div class="image-description">
+                    <h3>Special Day</h3>
+                    <p>
+                        My mom came home, making it a special day
+                        for me. I was happy that we could spend
+                        time together again, even if it was only
+                        for a few months.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FULL-SCREEN LIGHTBOX -->
+    <div id="lightbox"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Photo viewer">
+
+        <span class="close"
+              role="button"
+              tabindex="0"
+              aria-label="Close image"
+              onclick="closeLightbox()">&times;</span>
+
+        <span class="prev"
+              role="button"
+              tabindex="0"
+              aria-label="Previous image"
+              onclick="changeImage(-1)">&#10094;</span>
+
+        <img id="lightboxImage"
+             class="lightbox-content"
+             src=""
+             alt="Large gallery photo">
+
+        <span class="next"
+              role="button"
+              tabindex="0"
+              aria-label="Next image"
+              onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Lou Shayne Antonio. All rights reserved.</p>
+    </footer>
+
+    <div class="footer-divider"></div>
+
+    <!-- GALLERY JAVASCRIPT -->
+    <script>
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            const photos = document.querySelectorAll(".thumbnail");
+            const lightbox = document.getElementById("lightbox");
+            const largeImage = document.getElementById("lightboxImage");
+
+            if (!photos.length || !lightbox || !largeImage) {
+                alert("Gallery could not be loaded. Please check the HTML.");
+                return;
+            }
+
+            currentImageIndex = index;
+            largeImage.src = photos[index].src;
+            largeImage.alt = photos[index].alt;
+            lightbox.style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            const photos = document.querySelectorAll(".thumbnail");
+
+            if (!photos.length) return;
+
+            currentImageIndex =
+                (currentImageIndex + direction + photos.length) % photos.length;
+
+            const largeImage = document.getElementById("lightboxImage");
+            largeImage.src = photos[currentImageIndex].src;
+            largeImage.alt = photos[currentImageIndex].alt;
+        }
+
+        // Close when clicking the dark background
+        document.getElementById("lightbox").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard controls
+        document.addEventListener("keydown", function(event) {
+            const lightbox = document.getElementById("lightbox");
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+            if (lightbox.style.display === "flex" && event.key === "ArrowRight") {
+                changeImage(1);
+            }
+
+            if (lightbox.style.display === "flex" && event.key === "ArrowLeft") {
+                changeImage(-1);
+            }
+        });
+
+        // Logout confirmation
+        function confirmLogout() {
+            if (confirm("Are you sure you want to log out?")) {
+                window.location.href = "login.html";
+            }
+            return false;
+        }
+    </script>
+
+</body>
+</html>

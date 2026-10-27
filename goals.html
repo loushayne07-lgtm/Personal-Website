@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Goals</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>My Personal Website</h1>
+
+</header>
+
+
+<nav>
+
+    <ul>
+
+        <li>
+            <a href="index.html">HOME</a>
+        </li>
+
+        <li class="dropdown">
+
+            <a href="#">ABOUT ▾</a>
+
+            <div class="dropdown-content">
+
+                <a href="skills.html">My Skills</a>
+
+                <a href="goals.html">My Goals</a>
+
+                <a href="funfacts.html">Fun Facts</a>
+
+            </div>
+
+        </li>
+
+        <li>
+            <a href="gallery.html">GALLERY</a>
+        </li>
+
+        <li>
+            <a href="contact.html">CONTACT</a>
+        </li>
+
+        <li>
+            <a
+                href="#"
+                class="logout-button"
+                onclick="confirmLogout()"
+            >
+                LOG OUT
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<section
+    class="section"
+    style="padding-top:170px;"
+>
+
+
+    <div class="section-title">
+
+        <small>MY DREAMS</small>
+
+        <h2>My Goals</h2>
+
+        <p>
+            Turning dreams into goals and goals into achievement.
+        </p>
+
+    </div>
+
+
+    <div class="goal-grid">
+
+
+        <div
+            class="goal-card"
+            onclick="toggleGoal('goal1')"
+        >
+
+            <h3>🎓 Finish My Studies</h3>
+
+            <p>
+                Click to read more.
+            </p>
+
+            <div
+                class="goal-details"
+                id="goal1"
+            >
+
+                <p>
+                    I want to successfully complete
+                    my studies and gain more knowledge,save more money and 
+                    help my so hardworking mother.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="goal-card"
+            onclick="toggleGoal('goal2')"
+        >
+
+            <h3>💻 Improve My Coding</h3>
+
+            <p>
+                Click to read more.
+            </p>
+
+            <div
+                class="goal-details"
+                id="goal2"
+            >
+
+                <p>
+                    I want to continue practicing
+                    HTML, CSS, JavaScript, and
+                    other programming technologies so that I can understand it better and further expand my knowledge.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="goal-card"
+            onclick="toggleGoal('goal3')"
+        >
+
+            <h3>🌟 Build Better Projects</h3>
+
+            <p>
+                Click to read more.
+            </p>
+
+            <div
+                class="goal-details"
+                id="goal3"
+            >
+
+                <p>
+                   I want to create a useful and important website and application 
+                   that is accessible to everyone.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="goal-card"
+            onclick="toggleGoal('goal4')"
+        >
+
+            <h3>🚀 Prepare for My Career</h3>
+
+            <p>
+                Click to read more.
+            </p>
+
+            <div
+                class="goal-details"
+                id="goal4"
+            >
+
+                <p>
+                    I want to develop my skills and gain experience so that I can use them to become a successful
+                    IT professional in the future.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 Lou Shayne Antonio.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+<div class="footer-divider"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

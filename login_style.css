@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at top left, #8edcff, transparent 35%),
+        linear-gradient(135deg, #063970, #0879c9, #63ceff);
+    padding: 20px;
+}
+
+.login-wrapper {
+    width: 950px;
+    max-width: 100%;
+    min-height: 580px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 40, 80, 0.35);
+}
+
+/* Left side */
+
+.login-info {
+    background: linear-gradient(145deg, #063970, #0879c9);
+    color: white;
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-info .logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.login-info h1 {
+    font-size: 43px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.login-info h1 span {
+    color: #8fe1ff;
+}
+
+.login-info p {
+    color: #dff5ff;
+    line-height: 1.7;
+}
+
+/* Right side */
+
+.form-container {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container h2 {
+    color: #063970;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.form-subtitle {
+    color: #71899a;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    color: #17324d;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #cbdde9;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #0879c9;
+    box-shadow: 0 0 0 4px #e0f4ff;
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #60798d;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.show-password input {
+    accent-color: #0879c9;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #063970, #0879c9);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(8, 121, 201, 0.3);
+}
+
+.toggle-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #71899a;
+}
+
+.toggle-text a {
+    color: #0879c9;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.toggle-text a:hover {
+    text-decoration: underline;
+}
+
+#errorMessage {
+    color: #d62828;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+#passwordMatchMessage {
+    font-size: 13px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 700px) {
+
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .login-info {
+        padding: 35px;
+        text-align: center;
+    }
+
+    .login-info .logo {
+        margin: 0 auto 20px;
+    }
+
+    .login-info h1 {
+        font-size: 32px;
+    }
+
+    .form-container {
+        padding: 35px;
+    }
+}

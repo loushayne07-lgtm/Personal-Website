@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | My Blue Website</title>
+
+    <link rel="stylesheet" href="login_style.css">
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-info">
+
+            <div class="logo">
+                ✦
+            </div>
+
+            <h1>
+                Welcome to
+                <span>Shayne's Website</span>
+            </h1>
+
+            <p>
+                Explore my personal website and discover my
+                skills, goals, fun facts, photos, and more.
+            </p>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="form-container">
+
+            <h2 id="formTitle">Login</h2>
+
+            <p class="form-subtitle" id="formSubtitle">
+                Sign in to continue to your website.
+            </p>
+
+            <form id="authForm">
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <div
+                    class="form-group"
+                    id="confirmGroup"
+                    style="display:none;"
+                >
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                    >
+
+                </div>
+
+
+                <p
+                    id="passwordMatchMessage"
+                    style="display:none;"
+                ></p>
+
+
+                <div class="show-password" id="showPasswordContainer">
+
+                    <input
+                        type="checkbox"
+                        id="showPassword"
+                    >
+
+                    <label for="showPassword">
+                        Show Password
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                    id="submitButton"
+                >
+                    Login
+                </button>
+
+
+                <p id="errorMessage"></p>
+
+
+                <p class="toggle-text" id="toggleText">
+
+                    Don't have an account?
+
+                    <a href="#" id="toggleLink">
+                        Sign Up
+                    </a>
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let isLogin = true;
+
+        const form = document.getElementById("authForm");
+
+        const formTitle =
+            document.getElementById("formTitle");
+
+        const formSubtitle =
+            document.getElementById("formSubtitle");
+
+        const confirmGroup =
+            document.getElementById("confirmGroup");
+
+        const confirmPassword =
+            document.getElementById("confirmPassword");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+        const toggleText =
+            document.getElementById("toggleText");
+
+        const toggleLink =
+            document.getElementById("toggleLink");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+        const showPassword =
+            document.getElementById("showPassword");
+
+        const password =
+            document.getElementById("password");
+
+        const passwordMatchMessage =
+            document.getElementById("passwordMatchMessage");
+
+
+        /* SHOW PASSWORD */
+
+        showPassword.addEventListener("change", function () {
+
+            password.type =
+                this.checked ? "text" : "password";
+
+            confirmPassword.type =
+                this.checked ? "text" : "password";
+
+        });
+
+
+        /* SWITCH LOGIN / SIGN UP */
+
+        toggleLink.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            isLogin = !isLogin;
+
+            form.reset();
+
+            errorMessage.textContent = "";
+
+            passwordMatchMessage.style.display = "none";
+
+
+            if (!isLogin) {
+
+                formTitle.textContent = "Create Account";
+
+                formSubtitle.textContent =
+                    "Create your account to get started.";
+
+                confirmGroup.style.display = "block";
+
+                confirmPassword.required = true;
+
+                submitButton.textContent = "Sign Up";
+
+                toggleText.innerHTML =
+                    'Already have an account? <a href="#" id="toggleLink">Login</a>';
+
+            } else {
+
+                formTitle.textContent = "Login";
+
+                formSubtitle.textContent =
+                    "Sign in to continue to your website.";
+
+                confirmGroup.style.display = "none";
+
+                confirmPassword.required = false;
+
+                submitButton.textContent = "Login";
+
+                toggleText.innerHTML =
+                    'Don\'t have an account? <a href="#" id="toggleLink">Sign Up</a>';
+
+            }
+
+            document.getElementById("toggleLink")
+                .addEventListener("click", arguments.callee);
+
+        });
+
+
+        /* PASSWORD MATCH */
+
+        confirmPassword.addEventListener("input", function () {
+
+            if (isLogin) return;
+
+            if (this.value === "") {
+
+                passwordMatchMessage.style.display = "none";
+
+            } else if (this.value === password.value) {
+
+                passwordMatchMessage.textContent =
+                    "✓ Passwords match";
+
+                passwordMatchMessage.style.color =
+                    "#168a4a";
+
+                passwordMatchMessage.style.display =
+                    "block";
+
+            } else {
+
+                passwordMatchMessage.textContent =
+                    "Passwords do not match";
+
+                passwordMatchMessage.style.color =
+                    "#d62828";
+
+                passwordMatchMessage.style.display =
+                    "block";
+            }
+
+        });
+
+
+        /* FORM SUBMIT */
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const pass =
+                password.value;
+
+
+            if (!username || !pass) {
+
+                errorMessage.textContent =
+                    "Please fill out all fields.";
+
+                return;
+            }
+
+
+            if (isLogin) {
+
+                const savedUsername =
+                    localStorage.getItem("username");
+
+                const savedPassword =
+                    localStorage.getItem("password");
+
+
+                if (
+                    username === savedUsername &&
+                    pass === savedPassword
+                ) {
+
+                    localStorage.setItem(
+                        "isLoggedIn",
+                        "true"
+                    );
+
+                    alert("Welcome! Successfully logged in.");
+
+                    window.location.href =
+                        "index.html";
+
+                } else {
+
+                    errorMessage.textContent =
+                        "Invalid username or password.";
+
+                }
+
+            } else {
+
+                const confirm =
+                    confirmPassword.value;
+
+
+                if (pass !== confirm) {
+
+                    errorMessage.textContent =
+                        "Passwords do not match.";
+
+                    return;
+                }
+
+
+                localStorage.setItem(
+                    "username",
+                    username
+                );
+
+                localStorage.setItem(
+                    "password",
+                    pass
+                );
+
+                alert(
+                    "Account created successfully! You can now log in."
+                );
+
+                isLogin = true;
+
+                form.reset();
+
+                confirmGroup.style.display =
+                    "none";
+
+                confirmPassword.required =
+                    false;
+
+                formTitle.textContent =
+                    "Login";
+
+                formSubtitle.textContent =
+                    "Sign in to continue to your website.";
+
+                submitButton.textContent =
+                    "Login";
+
+                toggleText.innerHTML =
+                    'Don\'t have an account? <a href="#" id="toggleLink">Sign Up</a>';
+
+                errorMessage.textContent = "";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
